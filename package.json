@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "gallery:scan": "node scripts/scan-gallery.cjs"
+    "gallery:scan": "node scripts/scan-gallery.cjs",
+    "postinstall": "node scripts/patch-next.cjs"
   },
   "dependencies": {
     "next": "^16.0.0",

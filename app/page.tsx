@@ -16,7 +16,7 @@ export default function IntroPage() {
           className="w-[70vw] max-w-[640px] h-auto soft-mask"
         />
       </div>
-      <div className="flex justify-evenly w-96">
+      <div className="flex justify-between w-full max-w-3xl px-6 md:px-0 gap-4 mb-12">
         <Link
           href="/gallery"
           className="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-black text-white text-sm font-semibold"
@@ -34,6 +34,12 @@ export default function IntroPage() {
           className="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-black text-white text-sm font-semibold"
         >
           Timeline <span aria-hidden>→</span>
+        </Link>
+        <Link
+          href="/health"
+          className="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-black text-white text-sm font-semibold"
+        >
+          Health <span aria-hidden>→</span>
         </Link>
       </div>
     </main>

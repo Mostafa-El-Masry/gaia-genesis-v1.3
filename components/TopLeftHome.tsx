@@ -1,10 +1,15 @@
 "use client";
+import { useContext } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { usePathname } from "next/navigation";
+import { AppRouterContext } from "next/dist/shared/lib/app-router-context.shared-runtime";
+import { PathnameContext } from "next/dist/shared/lib/hooks-client-context.shared-runtime";
 import { GaiaWordmark } from "./Brand";
 export function TopLeftHome() {
-  const pathname = usePathname();
+  const router = useContext(AppRouterContext);
+  const pathname = useContext(PathnameContext);
+  if (!router) return null;
+  if (!pathname) return null;
   if (pathname === "/") return null;
   return (
     <div className="corner">
