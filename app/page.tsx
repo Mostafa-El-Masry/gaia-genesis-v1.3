@@ -41,6 +41,18 @@ export default function IntroPage() {
         >
           Health <span aria-hidden>→</span>
         </Link>
+        <Link
+          href="/labs"
+          className="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-black text-white text-sm font-semibold"
+        >
+          Labs <span aria-hidden>→</span>
+        </Link>
+        <Link
+          href="/wealth"
+          className="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-black text-white text-sm font-semibold"
+        >
+          Wealth <span aria-hidden>→</span>
+        </Link>
       </div>
     </main>
   );
