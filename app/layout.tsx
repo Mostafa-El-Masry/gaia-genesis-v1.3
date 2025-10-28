@@ -18,7 +18,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body>
+      <body className="bg-slate-50 font-sans text-slate-900 antialiased">
         <TopLeftHome />
         {children}
         <SpeedInsights />

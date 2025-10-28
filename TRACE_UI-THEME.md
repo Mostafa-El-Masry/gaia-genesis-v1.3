@@ -1,1 +1,8 @@
-# TRACE_UI-THEME.md — GAIA v1.3\n\n> Auto-maintained log of theme-related imports/usages (per user's project rule).\n\n**2025-10-23** — Week 1 (Intro)\n- `/app/globals.css` — defines `.intro-wordmark` (font stack, letter-spacing), `.corner` styles, reduced-motion handling.\n- `/components/TopLeftHome.tsx` — uses `.corner` and renders monogram/wordmark with system fonts.\n- No external theme libs used. No `data-theme` attributes yet.\n
+# TRACE_UI-THEME.md — GAIA v1.3
+
+> Auto-maintained log of theme-related imports/usages (per user's project rule).
+
+**2025-10-23** — Week 1 (Intro)
+- `/app/globals.css` — Tailwind directives plus root height helpers; no custom classes.
+- `/components/TopLeftHome.tsx` — Floating GAIA badge now built with Tailwind utilities (no global `.corner`).
+- No external theme libraries. No `data-theme` attributes yet.
