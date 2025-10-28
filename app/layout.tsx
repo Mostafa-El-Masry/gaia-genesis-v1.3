@@ -1,6 +1,7 @@
 ﻿import "./globals.css";
 import type { Metadata } from "next";
 import { TopLeftHome } from "@/components/TopLeftHome";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 export const dynamic = "force-dynamic";
 export const revalidate = 0;
@@ -20,6 +21,7 @@ export default function RootLayout({
       <body>
         <TopLeftHome />
         {children}
+        <SpeedInsights />
       </body>
     </html>
   );

@@ -53,6 +53,12 @@ export default function IntroPage() {
         >
           Wealth <span aria-hidden>→</span>
         </Link>
+        <Link
+          href="/sync"
+          className="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-black text-white text-sm font-semibold"
+        >
+          Sync <span aria-hidden>→</span>
+        </Link>
       </div>
     </main>
   );

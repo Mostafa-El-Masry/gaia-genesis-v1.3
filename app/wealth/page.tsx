@@ -1,18 +1,13 @@
 'use client';
 
-import { useMemo, useState } from 'react';
-import QuickAdd from './components/QuickAdd';
-import Filters, { type FilterState } from './components/Filters';
-import Ledger from './components/Ledger';
-import Budgets from './components/Budgets';
-import Goals from './components/Goals';
-import NetWorth from './components/NetWorth';
+import { useMemo } from 'react';
 import Simulator from './components/Simulator';
 import WealthLevels from './components/WealthLevels';
-import ExportImport from './components/ExportImport';
+import { simulate } from './lib/sim';
 
 export default function WealthPage(){
-  const [filter, setFilter] = useState<FilterState>({ q:'', type:'All', category:'' });
+  const simA = useMemo(()=>simulate('Plan A', { startYear: 2025, startMonthIndex: 11, yearsOfDeposits: 7, baseMonthlyDeposit: 25000, minReinvest: 1000 }), []);
+  const simB = useMemo(()=>simulate('Plan B', { startYear: 2025, startMonthIndex: 11, yearsOfDeposits: 7, baseMonthlyDeposit: Math.round(25000/4), minReinvest: 1000 }), []);
 
   return (
     <main className="min-h-screen bg-white text-black">
@@ -25,15 +20,9 @@ export default function WealthPage(){
           <h1 className="text-2xl font-extrabold tracking-wide">Wealth — Week 6</h1>
         </div>
 
-        <QuickAdd />
-        <Filters onChange={setFilter} />
-        <Budgets />
-        <Ledger filter={filter} />
-        <Goals />
-        <NetWorth />
         <Simulator />
         <WealthLevels />
-        <ExportImport />
+        {/* Export/Import moved to /sync (centralized). */}
       </div>
     </main>
   );
