@@ -1,8 +1,6 @@
-# TRACE_UI-THEME.md — GAIA v1.3
+# TRACE_UI-THEME.md (updated for Week 10)
 
-> Auto-maintained log of theme-related imports/usages (per user's project rule).
-
-**2025-10-23** — Week 1 (Intro)
-- `/app/globals.css` — Tailwind directives plus root height helpers; no custom classes.
-- `/components/TopLeftHome.tsx` — Floating GAIA badge now built with Tailwind utilities (no global `.corner`).
-- No external theme libraries. No `data-theme` attributes yet.
+- patches/intro-glass.page.tsx — uses Tailwind glass styles:
+  - `backdrop-blur-lg` at lines: [27, 33]
+  - translucent whites: `bg-white/10`, `bg-white/20`, `bg-white/70`
+- app/dashboard/** — Tailwind inline only; no theme toggles or data-theme attributes currently.

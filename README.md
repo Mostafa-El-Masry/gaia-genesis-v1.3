@@ -16,7 +16,7 @@ pnpm install   # or npm / yarn
 pnpm dev       # http://localhost:3000
 ```
 
-Development and build scripts run Next.js with `--webpack` so the project pins Webpack instead of Turbopack.
+Development runs with Next.js’ default Turbopack bundler; use the build script for production output.
 
 ## Structure
 
