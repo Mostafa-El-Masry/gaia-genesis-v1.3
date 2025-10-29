@@ -1,1 +1,31 @@
-# GAIA v1.3 — Week 1: Intro\n\nMinimal, clean intro page per spec:\n\n- White background, dark text\n- Centered **GAIA** wordmark at the largest reasonable size\n- No navbar\n- A **corner GAIA logo** exists globally but is hidden on the Intro (shows on other pages and links back home)\n- No external fonts; uses system stack for speed/stability\n- Respects `prefers-reduced-motion`\n\n## Quick start\n\n```bash\npnpm install   # or npm / yarn\npnpm dev       # http://localhost:3000\n```\n\n## Structure\n\n- `app/page.tsx`: Intro (just the big GAIA)\n- `components/TopLeftHome.tsx`: Fixed top-left "G / GAIA" that links to `/`, auto-hides on the Intro page\n- `components/Brand.tsx`: SVG monogram + wordmark\n- `app/globals.css`: Tailwind + small fade-in animation\n- `TRACE_UI-THEME.md`: running trace of theme-related references\n\n## Next steps (Week 2+)\n- Add routes like `/gallery`, `/apollo`, etc. The corner logo will appear automatically and route back to `/`.\n- The Intro will list component links as they are completed (not implemented in Week 1 by design).\n
+# GAIA v1.3 - Week 1: Intro
+
+Minimal, clean intro page per spec:
+
+- White background, dark text
+- Centered **GAIA** wordmark at the largest reasonable size
+- No navbar
+- A **corner GAIA logo** exists globally but is hidden on the Intro (shows on other pages and links back home)
+- No external fonts; uses system stack for speed/stability
+- Respects `prefers-reduced-motion`
+
+## Quick start
+
+```bash
+pnpm install   # or npm / yarn
+pnpm dev       # http://localhost:3000
+```
+
+Development and build scripts run Next.js with `--webpack` so the project pins Webpack instead of Turbopack.
+
+## Structure
+
+- `app/page.tsx`: Intro (just the big GAIA)
+- `components/TopLeftHome.tsx`: Fixed top-left "G / GAIA" that links to `/`, auto-hides on the Intro page
+- `components/Brand.tsx`: SVG monogram + wordmark
+- `app/globals.css`: Tailwind + small fade-in animation
+- `TRACE_UI-THEME.md`: running trace of theme-related references
+
+## Next steps (Week 2+)
+- Add routes like `/gallery`, `/apollo`, etc. The corner logo will appear automatically and route back to `/`.
+- The Intro will list component links as they are completed (not implemented in Week 1 by design).
