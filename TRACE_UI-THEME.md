@@ -1,6 +1,4 @@
-# TRACE_UI-THEME.md (updated for Week 10)
-
-- patches/intro-glass.page.tsx — uses Tailwind glass styles:
-  - `backdrop-blur-lg` at lines: [27, 33]
-  - translucent whites: `bg-white/10`, `bg-white/20`, `bg-white/70`
-- app/dashboard/** — Tailwind inline only; no theme toggles or data-theme attributes currently.
+# TRACE_UI-THEME.md (Week 11 update)
+- app/settings/sections/ThemeCard.tsx — defines UI preferences and writes CSS-like vars to <html> (accent, font scale, glass).
+- app/settings/page.tsx — no global theme provider; all styles are Tailwind inline.
+- Intro glass search (Week 10) continues to use backdrop blur; its intensity knob is `settings_glass`.

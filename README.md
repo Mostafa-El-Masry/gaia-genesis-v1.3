@@ -16,14 +16,14 @@ pnpm install   # or npm / yarn
 pnpm dev       # http://localhost:3000
 ```
 
-Development runs with Next.js’ default Turbopack bundler; use the build script for production output.
+Development runs with Next.js' default Turbopack bundler; use the build script for production output.
 
 ## Structure
 
 - `app/page.tsx`: Intro (just the big GAIA)
 - `components/TopLeftHome.tsx`: Fixed top-left "G / GAIA" that links to `/`, auto-hides on the Intro page
 - `components/Brand.tsx`: SVG monogram + wordmark
-- `app/globals.css`: Tailwind + small fade-in animation
+- `styles/global.css`: Tailwind layers and layout globals
 - `TRACE_UI-THEME.md`: running trace of theme-related references
 
 ## Next steps (Week 2+)
