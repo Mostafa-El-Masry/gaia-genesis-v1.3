@@ -1,7 +1,14 @@
-'use client';
+"use client";
 function b64(arr: ArrayBuffer){ return btoa(String.fromCharCode(...new Uint8Array(arr))); }
-function fromB64(s: string){ return Uint8Array.from(atob(s), c => c.charCodeAt(0)); }
-async function deriveKey(password: string, salt: Uint8Array){
+function fromB64(s: string): ArrayBuffer{
+  const binary = atob(s);
+  const bytes = new Uint8Array(binary.length);
+  for (let i = 0; i < binary.length; i += 1) {
+    bytes[i] = binary.charCodeAt(i);
+  }
+  return bytes.buffer;
+}
+async function deriveKey(password: string, salt: ArrayBuffer){
   const enc = new TextEncoder();
   const keyMat = await crypto.subtle.importKey('raw', enc.encode(password), {name:'PBKDF2'}, false, ['deriveKey']);
   return crypto.subtle.deriveKey(
@@ -15,9 +22,9 @@ async function deriveKey(password: string, salt: Uint8Array){
 export async function encryptJSON(obj: any, password: string){
   const salt = crypto.getRandomValues(new Uint8Array(16));
   const iv = crypto.getRandomValues(new Uint8Array(12));
-  const key = await deriveKey(password, salt);
+  const key = await deriveKey(password, salt.buffer);
   const plain = new TextEncoder().encode(JSON.stringify(obj));
-  const ct = await crypto.subtle.encrypt({name:'AES-GCM', iv}, key, plain);
+  const ct = await crypto.subtle.encrypt({name:'AES-GCM', iv: iv.buffer}, key, plain);
   return { enc:'AES-GCM', v:1, iv:b64(iv.buffer), salt:b64(salt.buffer), data:b64(ct) };
 }
 export async function decryptJSON(pack: {enc:string; v:number; iv:string; salt:string; data:string}, password: string){

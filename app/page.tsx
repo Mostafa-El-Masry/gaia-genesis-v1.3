@@ -11,27 +11,27 @@ import Link from "next/link";
  * - Ensured no stray scroll: min-h-[100svh], no margins.
  * - No Sync link (Backup is in /settings#backup).
  */
-export default function Intro(){
+export default function Intro() {
   const router = useRouter();
   const [open, setOpen] = useState(false);
-  const [q, setQ] = useState('');
+  const [q, setQ] = useState("");
 
   const left = [
-    { href: '/gallery', label: 'Gallery' },
-    { href: '/apollo', label: 'Apollo' },
-    { href: '/timeline', label: 'Timeline' },
-    { href: '/health', label: 'Health' },
+    { href: "/gallery", label: "Gallery" },
+    { href: "/apollo", label: "Apollo" },
+    { href: "/timeline", label: "Timeline" },
+    { href: "/health", label: "Health" },
   ];
   const right = [
-    { href: '/wealth', label: 'Wealth' },
-    { href: '/labs', label: 'Labs' },
-    { href: '/dashboard', label: 'Dashboard' },
-    { href: '/search', label: 'Search' },
+    { href: "/wealth", label: "Wealth" },
+    { href: "/labs", label: "Labs" },
+    { href: "/dashboard", label: "Dashboard" },
+    { href: "/search", label: "Search" },
   ];
 
-  function submit(){
+  function submit() {
     const query = q.trim();
-    router.push(query ? `/search?q=${encodeURIComponent(query)}` : '/search');
+    router.push(query ? `/search?q=${encodeURIComponent(query)}` : "/search");
   }
 
   return (
@@ -42,8 +42,11 @@ export default function Intro(){
           {/* Left links */}
           <div className="flex w-64 flex-col gap-3">
             {left.map((l) => (
-              <Link key={l.href} href={l.href}
-                className="block rounded-xl border border-black/10 bg-white px-4 py-3 text-lg font-semibold hover:border-black/30 hover:shadow-md active:scale-[.99] transition">
+              <Link
+                key={l.href}
+                href={l.href}
+                className="block rounded-xl border border-black/10 bg-white px-4 py-3 text-lg font-semibold hover:border-black/30 hover:shadow-md active:scale-[.99] transition"
+              >
                 {l.label}
               </Link>
             ))}
@@ -57,16 +60,21 @@ export default function Intro(){
                 src="/gaia-intro.svg"
                 alt="GAIA Symbol"
                 className="h-full w-full object-contain"
-                onError={(e)=>{ const t=e.target as HTMLImageElement; if (t.src.indexOf('.svg')>=0) t.src='/gaia-intro.png'; }}
+                onError={(e) => {
+                  const t = e.target as HTMLImageElement;
+                  if (t.src.indexOf(".svg") >= 0) t.src = "/gaia-intro.png";
+                }}
               />
             </div>
 
             {/* Glass chip search */}
             <div
               className="group relative flex w-full items-center gap-2 rounded-full border border-black/10 bg-white/10 p-3 backdrop-blur-lg transition-all duration-300 hover:border-black/20"
-              onMouseEnter={()=>setOpen(true)}
-              onMouseLeave={()=>{ if(!q) setOpen(false);}}
-              onClick={()=>setOpen(true)}
+              onMouseEnter={() => setOpen(true)}
+              onMouseLeave={() => {
+                if (!q) setOpen(false);
+              }}
+              onClick={() => setOpen(true)}
             >
               {/* Glass circle */}
               <div className="grid h-12 w-12 place-items-center rounded-full border border-black/10 bg-white/20 backdrop-blur">
@@ -74,12 +82,19 @@ export default function Intro(){
               </div>
 
               {/* Expanding input */}
-              <div className={"overflow-hidden transition-all duration-300 " + (open ? "w-full" : "w-0")}>
+              <div
+                className={
+                  "overflow-hidden transition-all duration-300 " +
+                  (open ? "w-full" : "w-0")
+                }
+              >
                 <input
                   autoFocus={open}
                   value={q}
-                  onChange={(e)=>setQ(e.target.value)}
-                  onKeyDown={(e)=>{ if(e.key==='Enter') submit(); }}
+                  onChange={(e) => setQ(e.target.value)}
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter") submit();
+                  }}
                   placeholder="Search GAIA…"
                   className="w-full rounded-full border border-black/10 bg-white/70 px-5 py-3 text-lg outline-none placeholder:text-black/50 focus:border-black/30"
                 />
@@ -101,8 +116,11 @@ export default function Intro(){
           {/* Right links */}
           <div className="flex w-64 flex-col gap-3">
             {right.map((l) => (
-              <Link key={l.href} href={l.href}
-                className="block rounded-xl border border-black/10 bg-white px-4 py-3 text-lg font-semibold hover:border-black/30 hover:shadow-md active:scale-[.99] transition">
+              <Link
+                key={l.href}
+                href={l.href}
+                className="block rounded-xl border border-black/10 bg-white px-4 py-3 text-lg font-semibold hover:border-black/30 hover:shadow-md active:scale-[.99] transition"
+              >
                 {l.label}
               </Link>
             ))}
@@ -116,25 +134,37 @@ export default function Intro(){
               src="/gaia-intro.svg"
               alt="GAIA Symbol"
               className="h-full w-full object-contain"
-              onError={(e)=>{ const t=e.target as HTMLImageElement; if (t.src.indexOf('.svg')>=0) t.src='/gaia-intro.png'; }}
+              onError={(e) => {
+                const t = e.target as HTMLImageElement;
+                if (t.src.indexOf(".svg") >= 0) t.src = "/gaia-intro.png";
+              }}
             />
           </div>
 
           <div
             className="group relative flex w-full max-w-xl items-center gap-2 rounded-full border border-black/10 bg-white/10 p-3 backdrop-blur-lg transition-all duration-300 hover:border-black/20"
-            onMouseEnter={()=>setOpen(true)}
-            onMouseLeave={()=>{ if(!q) setOpen(false);}}
-            onClick={()=>setOpen(true)}
+            onMouseEnter={() => setOpen(true)}
+            onMouseLeave={() => {
+              if (!q) setOpen(false);
+            }}
+            onClick={() => setOpen(true)}
           >
             <div className="grid h-12 w-12 place-items-center rounded-full border border-black/10 bg-white/20 backdrop-blur">
               <span className="text-lg font-black tracking-tight">G</span>
             </div>
-            <div className={"overflow-hidden transition-all duration-300 " + (open ? "w-full" : "w-0")}>
+            <div
+              className={
+                "overflow-hidden transition-all duration-300 " +
+                (open ? "w-full" : "w-0")
+              }
+            >
               <input
                 autoFocus={open}
                 value={q}
-                onChange={(e)=>setQ(e.target.value)}
-                onKeyDown={(e)=>{ if(e.key==='Enter') submit(); }}
+                onChange={(e) => setQ(e.target.value)}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter") submit();
+                }}
                 placeholder="Search GAIA…"
                 className="w-full rounded-full border border-black/10 bg-white/70 px-5 py-3 text-lg outline-none placeholder:text-black/50 focus:border-black/30"
               />
@@ -152,8 +182,11 @@ export default function Intro(){
 
           <div className="grid w-full max-w-2xl grid-cols-2 gap-3">
             {[...left, ...right].map((l) => (
-              <Link key={l.href} href={l.href}
-                className="block rounded-xl border border-black/10 bg-white px-4 py-3 text-base font-semibold hover:border-black/30 hover:shadow-md active:scale-[.99] transition">
+              <Link
+                key={l.href}
+                href={l.href}
+                className="block rounded-xl border border-black/10 bg-white px-4 py-3 text-base font-semibold hover:border-black/30 hover:shadow-md active:scale-[.99] transition"
+              >
                 {l.label}
               </Link>
             ))}
@@ -161,7 +194,13 @@ export default function Intro(){
         </div>
 
         <div className="mt-6 text-center text-xs opacity-50">
-          Backup moved to <a className="underline" href="/settings#backup">Settings + Backup</a>
+          <a className="underline" href="/settings#backup">
+            Settings + Backup
+          </a>
+          <br />
+          <a className="underline" href="/interlog">
+            Introduction
+          </a>
         </div>
       </div>
     </main>

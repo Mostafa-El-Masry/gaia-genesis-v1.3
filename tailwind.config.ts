@@ -8,7 +8,31 @@ export default {
   ],
   blocklist: ["[-:T]"],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        sans: [
+          "system-ui",
+          "-apple-system",
+          "BlinkMacSystemFont",
+          "Segoe UI",
+          "Roboto",
+          "sans-serif",
+        ],
+        mono: [
+          "ui-monospace",
+          "SFMono-Regular",
+          "Menlo",
+          "Monaco",
+          "Consolas",
+          "monospace",
+        ],
+      },
+    },
   },
-  plugins: [typography()],
+  plugins: [
+    typography({
+      className: "prose",
+      target: "modern",
+    }),
+  ],
 } satisfies Config;

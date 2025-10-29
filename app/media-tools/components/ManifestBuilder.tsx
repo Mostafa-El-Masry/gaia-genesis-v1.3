@@ -15,6 +15,14 @@ function dedupe(items: ManifestItem[]): ManifestItem[]{
   return out;
 }
 
+function isManifest(candidate: unknown): candidate is GalleryManifestV1 {
+  if (!candidate || typeof candidate !== 'object') return false;
+  const data = candidate as Partial<GalleryManifestV1>;
+  return data.schema === 'gallery_manifest_v1'
+    && typeof data.createdAt === 'string'
+    && Array.isArray(data.items);
+}
+
 export default function ManifestBuilder(){
   const [manifest, setManifest] = useState<GalleryManifestV1 | null>(null);
   const [jsonText, setJsonText] = useState('');
@@ -28,12 +36,12 @@ export default function ManifestBuilder(){
   function loadFromText(){
     try{
       const obj = JSON.parse(jsonText);
-      if (obj.schema==='gallery_manifest_v1'){
+      if (isManifest(obj)){
         setManifest(obj);
         localStorage.setItem('gallery_manifest_v1', JSON.stringify(obj));
         setStatus('Loaded manifest from pasted JSON.');
-      } else if (obj.items) {
-        const m = { schema:'gallery_manifest_v1', createdAt:new Date().toISOString(), items: obj.items as ManifestItem[] };
+      } else if (obj?.items && Array.isArray(obj.items)) {
+        const m: GalleryManifestV1 = { schema:'gallery_manifest_v1', createdAt:new Date().toISOString(), items: obj.items as ManifestItem[] };
         setManifest(m);
         localStorage.setItem('gallery_manifest_v1', JSON.stringify(m));
         setStatus('Loaded generic items → manifest.');
